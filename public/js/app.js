@@ -16,7 +16,7 @@ const urlParams = new URLSearchParams(queryString);
 console.log(queryString);
 const LEVEL = urlParams.get('level')
 const username = urlParams.get('username')
-console.log(LEVEL);
+//console.log(LEVEL);
 
 const buttonElementID = document.getElementById("StartButton");
 const gameContentID = document.getElementById("GameContent");
