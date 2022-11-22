@@ -286,7 +286,7 @@ function init() {
 
 
 
-const maxtime = 300000;
+const maxtime = 30000;
 let counter = maxtime / 1000; // seconds
 document.getElementById("Time").innerHTML = counter;
 
