@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'karcade';
-  src: url('../font/karcade.ttf');
+  font-family: 'chrustyRock';
+  src: url('../font/chrustyRock.ttf');
 }
 
 * {
@@ -11,7 +11,7 @@
 }
 
 body {
-  font-family: 'karcade';
+  font-family: 'chrustyRock';
   background-image: url('https://wallpapercave.com/uwp/uwp410864.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
