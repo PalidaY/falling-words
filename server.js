@@ -47,7 +47,7 @@ server.listen(PORT, () => console.log(`Server running on client PORT : ${PORT}`)
 
 //Run when clients connect
 io.on('connection', socket => {
-    console.log(socket.id + 'New Websocket connection');
+    console.log(socket.id + ' New Websocket connection');
 
     //console.log(io.of("/").adapter);
     socket.on("joinRoom", ({ username, LEVEL }) => {
