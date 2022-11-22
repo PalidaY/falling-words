@@ -73,9 +73,10 @@ io.on('connection', socket => {
 
     });
 
-    socket.on('buttonPressed', Level => {
-        console.log(Level);
-        io.to(Level).emit("startplayfromserver");
+    socket.on('buttonPressed', () => {
+        const user = getCurrentUser(socket.id); 
+        console.log(user.room);
+        io.to(user.room).emit("startplayfromserver");
 
     });
 
@@ -102,11 +103,11 @@ io.on('connection', socket => {
 
     });
 
-    socket.on('Gameover', LEVEL => {
+    socket.on('Gameover', () => {
         console.log(socket.id + ' serverhere');
 
         const user = getCurrentUser(socket.id);
-        socket.to(LEVEL).emit("FinalUsers", {
+        socket.to(user.room).emit("FinalUsers", {
             users: getRoomUsers(user.room)
         });
 

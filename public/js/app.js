@@ -225,7 +225,7 @@ function outputUsers(users) {
 playbutton.addEventListener("click", () => {
   console.log("botton clicked");
 
-  socket.emit('buttonPressed', LEVEL);
+  socket.emit('buttonPressed');
 
 
 
@@ -299,7 +299,7 @@ function timedCount() {
   }
   if (counter == 0) {
     // gameover when counter=0
-    socket.emit('Gameover', LEVEL);
+    socket.emit('Gameover');
     gameOver = true;
   }
 }
