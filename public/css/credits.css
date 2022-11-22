@@ -40,9 +40,9 @@ ul {
   list-style: none;
 }
 
-li:first-of-type {
+/*li:first-of-type {
   color: greenyellow;
-}
+}*/
 
 li {
   margin: 0.8rem 0;
