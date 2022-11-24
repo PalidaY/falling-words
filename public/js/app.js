@@ -464,6 +464,7 @@ function drawWord() {
     if(GENERALDICTIONARY.includes(word)){
       wordDiv.classList.add("word");
       wordDiv.setAttribute("id", "general");
+
     }else{
       wordDiv.classList.add("word");
       wordDiv.setAttribute("id", "long");
@@ -525,8 +526,8 @@ function drawWord() {
 //Push words
   arrWordsDiv.push(wordDiv);
   gameContentClass[0].appendChild(wordDiv);
-  console.log(arrWords);
-  console.log(arrWordsDiv);
+  //console.log(arrWords);
+  //console.log(arrWordsDiv);
 
 
 }
@@ -547,12 +548,15 @@ function getWord() { // call
   
   
   let inputValue = inputElementID.value.toLowerCase();
+  inputElementID.value = "";
+  
+
   setTimeout(function(){
     console.log("getword called" + inputValue);
     console.log(arrWords.includes(inputValue));
     //logic
   },20000);
-  //inputElementID.value = "";
+  
   
   if (arrWords.includes(inputValue)) {
     updateScore(); 
@@ -566,7 +570,8 @@ function getWord() { // call
 }
 
 socket.on("startdeletefromserver", inputValue => {
-  //console.log(inputValue);
+  console.log("startdeletefromserver" + inputValue);
+  console.log(arrWords);
   let indexWord = arrWords.indexOf(inputValue); // index of inputword in arrWords  
   let wordDivIndex = arrWordsDiv[indexWord];    // inputword in div
   arrWords.splice(indexWord, 1);    // remove inputword from arrWords
@@ -632,22 +637,21 @@ function updateScore() {
     scoreElementID.innerHTML = `<p>Score ${score}</p>`;
     socket.emit("bomb",score);
 
-  }else if(["snipers","rifle",
+  }else if((["snipers","rifle",
   "pistols",
   "gun",
   "shotgun",
-  "handguns"].includes(inputValue)){
+  "handguns"]).includes(inputValue)){
     scoreElementID.innerHTML = `<p>Score ${score}</p>`;
     socket.emit("gun",score);
 
-  }else if(["sword","knife"].includes(inputValue)){
+  }else if((["sword","knife"]).includes(inputValue)){
     scoreElementID.innerHTML = `<p>Score ${score}</p>`;
     socket.emit("knife",score);
 
   }else if(ANGELWORDDICTIONARY.includes(inputValue)){
     scoreElementID.innerHTML = `<p>Score ${score}</p>`;
     socket.emit("angel",score);
-
   }else if(FORBIDDENWORDDICTIONARY.includes(inputValue)){
     console.log("forbidden "+ inputValue);
     score = 0;
@@ -663,7 +667,8 @@ function updateScore() {
     score -= 10;
     scoreElementID.innerHTML = `<p>Score ${score}</p>`;
     socket.emit('showscore', { username, LEVEL, score });
-  }
+  } 
+  
 
 
   

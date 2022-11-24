@@ -93,7 +93,7 @@ io.on('connection', socket => {
     
 
     socket.on("Deleteword", inputValue => {
-        console.log(inputValue);
+        console.log("Deleteword "+ inputValue);
         const user = getCurrentUser(socket.id);
         io.to(user.room).emit("startdeletefromserver", inputValue);
     });
