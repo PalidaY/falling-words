@@ -610,7 +610,7 @@ function getWord() { // call
   inputElementID.value = "";
   if (arrWords.includes(inputValue)) {
     updateScore(inputValue);
-    playSound(pointSound, 0, notPointSound);
+    
     socket.emit("Deleteword", inputValue);
 
   } else {
@@ -663,12 +663,14 @@ function updateScore(inputValue) {
   */
   if(GENERALDICTIONARY.includes(inputValue)){
     console.log("general "+ inputValue);
+    playSound(pointSound, 0, notPointSound);
     score += 10;
 
     scoreElementID.innerHTML = `<p>Score ${score}</p>`;
     socket.emit('showscore', { username, LEVEL, score });
   }else if(LONGWORDDICTIONARY.includes(inputValue)){
     console.log("long "+ inputValue);
+    playSound(pointSound, 0, notPointSound);
     score += 50;
 
     scoreElementID.innerHTML = `<p>Score ${score}</p>`;
@@ -676,7 +678,8 @@ function updateScore(inputValue) {
 
     // WAR
   }else if(inputValue == "nuclear"){
-    console.log("nuclear "+ inputValue);
+    
+     playSound(pointSound, 0, notPointSound);
      score = 0;
 
      scoreElementID.innerHTML = `<p>Score ${score}</p>`;
@@ -684,10 +687,12 @@ function updateScore(inputValue) {
      socket.emit('Gameover');
      gameOver = true;
   }else if(inputValue == "missile"){
+    playSound(pointSound, 0, notPointSound);
     scoreElementID.innerHTML = `<p>Score ${score}</p>`;
     socket.emit("missile",score);
     
   }else if(inputValue == "bomb"){
+    playSound(pointSound, 0, notPointSound);
     scoreElementID.innerHTML = `<p>Score ${score}</p>`;
     socket.emit("bomb",score);
 
@@ -696,28 +701,33 @@ function updateScore(inputValue) {
   "gun",
   "shotgun",
   "handguns"]).includes(inputValue)){
+    playSound(pointSound, 0, notPointSound);
     scoreElementID.innerHTML = `<p>Score ${score}</p>`;
     socket.emit("gun",score);
 
   }else if((["sword","knife"]).includes(inputValue)){
+    playSound(pointSound, 0, notPointSound);
     scoreElementID.innerHTML = `<p>Score ${score}</p>`;
     socket.emit("knife",score);
 
   }else if(ANGELWORDDICTIONARY.includes(inputValue)){
+    playSound(pointSound, 0, notPointSound);
     scoreElementID.innerHTML = `<p>Score ${score}</p>`;
     socket.emit("angel",score);
   }else if(FORBIDDENWORDDICTIONARY.includes(inputValue)){
-    console.log("forbidden "+ inputValue);
+    playSound(pointSound, 0, notPointSound);
     score = 0;
     scoreElementID.innerHTML = `<p>Score ${score}</p>`;
     socket.emit('showscore', { username, LEVEL, score });
 
   }else if(INCATEGORYDICTIONARY.includes(inputValue)){
+    playSound(pointSound, 0, notPointSound);
     score += 10;
     scoreElementID.innerHTML = `<p>Score ${score}</p>`;
     socket.emit('showscore', { username, LEVEL, score });
 
   }else if(OUTWORDDICTIONARY.includes(inputValue)){
+    playSound(notPointSound, 0, pointSound);
     score -= 10;
     scoreElementID.innerHTML = `<p>Score ${score}</p>`;
     socket.emit('showscore', { username, LEVEL, score });
