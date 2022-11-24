@@ -39,7 +39,25 @@ h6 {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.word {
+/*.word {
+  position: absolute;
+  background-color: rgb(57, 198, 83);
+  padding: 0 10;
+  width: auto;
+  height: auto;
+  text-align: center;
+}*/
+
+
+#general.word {
+  position: absolute;
+  background-color: rgb(147, 153, 56);
+  padding: 0 10;
+  width: auto;
+  height: auto;
+  text-align: center;
+}
+#long.word {
   position: absolute;
   background-color: rgb(57, 198, 83);
   padding: 0 10;
@@ -47,8 +65,22 @@ h6 {
   height: auto;
   text-align: center;
 }
-
-
+#angel.word {
+  position: absolute;
+  background-color: rgb(177, 31, 121);
+  padding: 0 10;
+  width: auto;
+  height: auto;
+  text-align: center;
+}
+#weapon.word {
+  position: absolute;
+  background-color: rgb(145, 22, 18);
+  padding: 0 10;
+  width: auto;
+  height: auto;
+  text-align: center;
+}
 .word p {
   position: relative;
   margin: 0;
