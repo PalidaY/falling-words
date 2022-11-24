@@ -71,9 +71,8 @@ h6 {
   text-align: center;
 }
 #generalsp.word {
-  /*apply animation*/
-  animation: fade-inout 0.25s infinite alternate;
-  /*style the text*/
+  writing-mode: vertical-lr;
+  text-orientation: upright;
   position: absolute;
   background-color: rgb(147, 153, 56);
   padding: 0 10;
