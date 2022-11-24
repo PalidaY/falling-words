@@ -1,3 +1,8 @@
+@keyframes fade-inout{
+  0%{ opacity: 1;}
+  100%{ opacity: 0;}
+}
+
 h2 {
   margin-bottom: 1.5rem;
 }
@@ -57,7 +62,29 @@ h6 {
   height: auto;
   text-align: center;
 }
+#generalsp.word {
+  /*apply animation*/
+  animation: fade-inout 0.25s infinite alternate;
+  /*style the text*/
+  position: absolute;
+  background-color: rgb(147, 153, 56);
+  padding: 0 10;
+  width: auto;
+  height: auto;
+  text-align: center;
+}
 #long.word {
+  position: absolute;
+  background-color: rgb(57, 198, 83);
+  padding: 0 10;
+  width: auto;
+  height: auto;
+  text-align: center;
+}
+#longsp.word {
+  /*apply animation*/
+  animation: fade-inout 0.25s infinite alternate;
+  /*style the text*/
   position: absolute;
   background-color: rgb(57, 198, 83);
   padding: 0 10;
@@ -85,6 +112,7 @@ h6 {
   position: relative;
   margin: 0;
 }
+
 
 .modal-gameover {
   display: flex;

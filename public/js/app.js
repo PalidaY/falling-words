@@ -3,6 +3,7 @@
 
 // HTTP GET LEVEL FROM index.html
 
+
 const socket = io();
 const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
