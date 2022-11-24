@@ -36,9 +36,14 @@ const gameHeight = gameContentID.clientHeight;
 
 
 
+//Initial Score
+let score;
+if(currentLevel==2600){
+ score = 500;
+}else{
+  score = 0;
+}
 
-
-let score = 0;
 let gameOver = false;
 let arrWords = [];
 let arrWordsDiv = [];
@@ -252,6 +257,61 @@ pointSound.volume = 0.2;
  "Rifle",
  "Pistols",
  "Shotgun",
+ "Handguns",
+ "Nuclear",  
+ "Bomb",
+ "Snipers",
+ "Gun",
+ "Sword",
+ "Knife",
+ "Missile",
+ "Rifle",
+ "Pistols",
+ "Shotgun",
+ "Handguns",
+ "Nuclear",  
+ "Bomb",
+ "Snipers",
+ "Gun",
+ "Sword",
+ "Knife",
+ "Missile",
+ "Rifle",
+ "Pistols",
+ "Shotgun",
+ "Handguns",
+ "Nuclear",  
+ "Bomb",
+ "Snipers",
+ "Gun",
+ "Sword",
+ "Knife",
+ "Missile",
+ "Rifle",
+ "Pistols",
+ "Shotgun",
+ "Handguns",
+ "Nuclear",  
+ "Bomb",
+ "Snipers",
+ "Gun",
+ "Sword",
+ "Knife",
+ "Missile",
+ "Rifle",
+ "Pistols",
+ "Shotgun",
+ "Handguns",
+ "Nuclear",  
+ "Bomb",
+ "Snipers",
+ "Gun",
+ "Sword",
+ "Knife",
+ "Missile",
+ "Rifle",
+ "Pistols",
+ "Shotgun",
  "Handguns"] ;
  WEAPONWORDDICTIONARY = WEAPONWORDDICTIONARY.map(element => {
    return element.toLowerCase();
@@ -334,10 +394,16 @@ function outputRoomName(room) {
 
   if (room === "3000") {
     roomName.innerText = 'Room Easy ';
-  } else if (LEVEL === "2000") {
+  } else if (room=== "2000") {
     roomName.innerText = 'Room Medium ';
-  } else {
+  } else if (room=== "1200") {
     roomName.innerText = 'Room Hard ';
+  }else if (room=== "1000") {
+    roomName.innerText = 'Room Super Hard ';
+  }else if (room=== "3500") {
+    roomName.innerText = 'Room Word Trap ';
+  }else if (room=== "2600") {
+    roomName.innerText = 'Room War';
   }
 
 }
@@ -479,7 +545,7 @@ function drawWord() {
       wordDiv.setAttribute("id", "longsp");
     }
     //WAR
-  }else if(currentLevel=="1500"){
+  }else if(currentLevel=="2600"){
     word = generateRandomWord(WARDICTIONARY);
     console.log("War " +word);
     wordDiv = document.createElement("div");
@@ -541,7 +607,7 @@ function getWord() { // call
   let inputValue = inputElementID.value.toLowerCase();
   inputElementID.value = "";
   if (arrWords.includes(inputValue)) {
-    updateScore();
+    updateScore(inputValue);
     playSound(pointSound, 0, notPointSound);
     socket.emit("Deleteword", inputValue);
 
@@ -586,10 +652,74 @@ function updateWordPosition() {
 }
 
 // UPDATE SCORE
-function updateScore() {
+function updateScore(inputValue) {
+  /*
+  console.log("inputvalue is "+ inputValue);
   score += 10;
   scoreElementID.innerHTML = `<p>Score ${score}</p>`;
   socket.emit('showscore', { username, LEVEL, score });
+  */
+  if(GENERALDICTIONARY.includes(inputValue)){
+    console.log("general "+ inputValue);
+    score += 10;
+
+    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    socket.emit('showscore', { username, LEVEL, score });
+  }else if(LONGWORDDICTIONARY.includes(inputValue)){
+    console.log("long "+ inputValue);
+    score += 50;
+
+    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    socket.emit('showscore', { username, LEVEL, score });
+
+    // WAR
+  }else if(inputValue == "nuclear"){
+    console.log("nuclear "+ inputValue);
+     score = 0;
+
+     scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+     socket.emit("nuclear",score);
+     socket.emit('Gameover');
+     gameOver = true;
+  }else if(inputValue == "missile"){
+    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    socket.emit("missile",score);
+    
+  }else if(inputValue == "bomb"){
+    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    socket.emit("bomb",score);
+
+  }else if((["snipers","rifle",
+  "pistols",
+  "gun",
+  "shotgun",
+  "handguns"]).includes(inputValue)){
+    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    socket.emit("gun",score);
+
+  }else if((["sword","knife"]).includes(inputValue)){
+    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    socket.emit("knife",score);
+
+  }else if(ANGELWORDDICTIONARY.includes(inputValue)){
+    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    socket.emit("angel",score);
+  }else if(FORBIDDENWORDDICTIONARY.includes(inputValue)){
+    console.log("forbidden "+ inputValue);
+    score = 0;
+    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    socket.emit('showscore', { username, LEVEL, score });
+
+  }else if(INCATEGORYDICTIONARY.includes(inputValue)){
+    score += 10;
+    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    socket.emit('showscore', { username, LEVEL, score });
+
+  }else if(OUTWORDDICTIONARY.includes(inputValue)){
+    score -= 10;
+    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    socket.emit('showscore', { username, LEVEL, score });
+  } 
 }
 
 

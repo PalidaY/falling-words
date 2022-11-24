@@ -73,6 +73,16 @@ io.on('connection', socket => {
 
     });
 
+    socket.on("shuffleDictionary",({DICTIONARY,WARDICTIONARY,CATDICTIONARY})=>{
+        const user = getCurrentUser(socket.id);
+        const newDICTIONARY = DICTIONARY.sort((a, b) => 0.5 - Math.random());
+        const newWARDICTIONARY = WARDICTIONARY.sort((a, b) => 0.5 - Math.random());
+        const newCATDICTIONARY = CATDICTIONARY.sort((a, b) => 0.5 - Math.random());
+
+        io.to(user.room).emit("sendDictoroom", { newDICTIONARY,newWARDICTIONARY,newCATDICTIONARY});
+
+    } );
+
     socket.on('buttonPressed', Level => {
         console.log(Level);
         io.to(Level).emit("startplayfromserver");
@@ -88,7 +98,91 @@ io.on('connection', socket => {
     });
 
 
+    
+    
+    socket.on("nuclear",score=>{
+        const user = getCurrentUser(socket.id);
+        const users = getRoomUsers(user.room);
+        users.forEach((user) => {
+            user.score = 0;
+          });
+        io.to(user.room).emit("roomUsers", {
+            room: user.room,
+            users: getRoomUsers(user.room),
+        });
 
+
+    });
+ 
+    socket.on("missile",score=>{
+        const user = getCurrentUser(socket.id);
+        const users = getRoomUsers(user.room);
+        users.forEach((user) => {
+            user.score -= 100;
+          });
+        user.score = score;
+        io.to(user.room).emit("roomUsers", {
+            room: user.room,
+            users: getRoomUsers(user.room),
+        });
+        
+    });
+
+    socket.on("bomb",score=>{
+        const user = getCurrentUser(socket.id);
+        const users = getRoomUsers(user.room);
+        users.forEach((user) => {
+            user.score -= 50;
+        });
+        user.score = score;
+        io.to(user.room).emit("roomUsers", {
+            room: user.room,
+            users: getRoomUsers(user.room),
+        });
+
+        
+    });
+
+    socket.on("gun",score=>{
+        const user = getCurrentUser(socket.id);
+        const users = getRoomUsers(user.room);
+        users.forEach((user) => {
+            user.score -= 25;
+        });
+        user.score = score;
+        io.to(user.room).emit("roomUsers", {
+            room: user.room,
+            users: getRoomUsers(user.room),
+        });
+        
+    });
+    socket.on("knife",score=>{
+        const user = getCurrentUser(socket.id);
+        const users = getRoomUsers(user.room);
+        users.forEach((user) => {
+            user.score -= 10;
+        });
+        user.score = score;
+        io.to(user.room).emit("roomUsers", {
+            room: user.room,
+            users: getRoomUsers(user.room),
+        });
+        
+    });
+    socket.on("angel",score=>{
+        const user = getCurrentUser(socket.id);
+        const users = getRoomUsers(user.room);
+        users.forEach((user) => {
+            user.score += 50;
+        });
+        user.score = score;
+        io.to(user.room).emit("roomUsers", {
+            room: user.room,
+            users: getRoomUsers(user.room),
+        });
+        
+    });
+    
 
     socket.on('showscore', ({ username, LEVEL, score }) => {
         console.log('showscore');
