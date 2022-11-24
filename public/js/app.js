@@ -492,7 +492,7 @@ function init() {
 
 
 
-const maxtime = 30000;
+const maxtime = 300000;
 let counter = maxtime / 1000; // seconds
 document.getElementById("Time").innerHTML = counter;
 
@@ -750,12 +750,18 @@ function playSound(sound, time, stopSound) {
 // SHOWS CURRENT PLAYING LEVEL
 function showLevel() {
   if (LEVEL === "3000") {
-    levelElementID.innerHTML = `<p>Level: EASY</p>`;
+    levelElementID.innerHTML = `<p>MODE: EASY</p>`;
   } else if (LEVEL === "2000") {
-    levelElementID.innerHTML = `<p>Level: MEDIUM</p>`;
-  } else {
-    levelElementID.innerHTML = `<p>Level: HARD</p>`;
-  }
+    levelElementID.innerHTML = `<p>MODE: MEDIUM</p>`;
+  } else if (LEVEL === "1200") {
+    levelElementID.innerHTML = `<p>MODE: HARD</p>`;
+  } else if (LEVEL === "1000") {
+    levelElementID.innerHTML = `<p>MODE: SUPER HARD</p>`;
+  } else if (LEVEL === "3500") {
+    levelElementID.innerHTML = `<p>MODE: WORD TRAP</p>`;
+  } else if (LEVEL === "2600") {
+    levelElementID.innerHTML = `<p>MODE: WAR</p>`;
+  } 
 }
 //gameover when time is out
 
