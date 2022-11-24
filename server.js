@@ -47,7 +47,7 @@ server.listen(PORT, () => console.log(`Server running on client PORT : ${PORT}`)
 
 //Run when clients connect
 io.on('connection', socket => {
-    console.log(socket.id + ' New Websocket connection');
+    console.log(socket.id + 'New Websocket connection');
 
     //console.log(io.of("/").adapter);
     socket.on("joinRoom", ({ username, LEVEL }) => {
@@ -73,122 +73,21 @@ io.on('connection', socket => {
 
     });
 
-    socket.on("shuffleDictionary",({DICTIONARY,WARDICTIONARY,CATDICTIONARY})=>{
-        
-        const newDICTIONARY = DICTIONARY.sort((a, b) => 0.5 - Math.random());
-        const newWARDICTIONARY = WARDICTIONARY.sort((a, b) => 0.5 - Math.random());
-        const newCATDICTIONARY = CATDICTIONARY.sort((a, b) => 0.5 - Math.random()); 
-        const user = getCurrentUser(socket.id);
-        io.to(user.room).emit("sendDictoroom", {newDICTIONARY,newWARDICTIONARY,newCATDICTIONARY});
+    socket.on('buttonPressed', Level => {
+        console.log(Level);
+        io.to(Level).emit("startplayfromserver");
 
     });
 
-    socket.on('buttonPressed', () => {
-        const user = getCurrentUser(socket.id); 
-        console.log(user.room);
-        io.to(user.room).emit("startplayfromserver");
 
-    });
-
-    
 
     socket.on("Deleteword", inputValue => {
-        console.log("Deleteword "+ inputValue);
+        console.log(inputValue);
         const user = getCurrentUser(socket.id);
         io.to(user.room).emit("startdeletefromserver", inputValue);
     });
 
 
-
-    socket.on('nuclear',()=>{
-        const user = getCurrentUser(socket.id);
-        //const removeuser = userLeave(socket.id);
-        //const user = userJoin(socket.id, username, LEVEL, 0);
-        const users =  getRoomUsers(user.room);
-        users.forEach((user) => {
-           user.score = 0;
-        });
-        
-        io.to(user.room).emit("roomUsers", {
-            room: user.room,
-            users: getRoomUsers(user.room),
-        });
-        
-    });
-
-    socket.on('bomb',score=>{
-        const currentuser = getCurrentUser(socket.id);
-        //const removeuser = userLeave(socket.id);
-        //const user = userJoin(socket.id, username, LEVEL, 0);
-        const users =  getRoomUsers(currentuser.room);
-        users.forEach((user) => {
-           user.score -= 50;
-        });
-        currentuser.score = score;
-        io.to(currentuser.room).emit("roomUsers", {
-            room: currentuser.room,
-            users: getRoomUsers(currentuser.room),
-        });
-    });
-
-    socket.on('missile',score=>{
-        const currentuser = getCurrentUser(socket.id);
-        //const removeuser = userLeave(socket.id);
-        //const user = userJoin(socket.id, username, LEVEL, 0);
-        const users =  getRoomUsers(currentuser.room);
-        users.forEach((user) => {
-           user.score -= 100;
-        });
-        currentuser.score = score;
-        io.to(currentuser.room).emit("roomUsers", {
-            room: currentuser.room,
-            users: getRoomUsers(currentuser.room),
-        });
-    });
-    socket.on('gun',score=>{
-        const currentuser = getCurrentUser(socket.id);
-        //const removeuser = userLeave(socket.id);
-        //const user = userJoin(socket.id, username, LEVEL, 0);
-        const users =  getRoomUsers(currentuser.room);
-        users.forEach((user) => {
-           user.score -= 25;
-        });
-        currentuser.score = score;
-        io.to(currentuser.room).emit("roomUsers", {
-            room: currentuser.room,
-            users: getRoomUsers(currentuser.room),
-        });
-    });
-
-    socket.on('knife',score=>{
-        const currentuser = getCurrentUser(socket.id);
-        //const removeuser = userLeave(socket.id);
-        //const user = userJoin(socket.id, username, LEVEL, 0);
-        const users =  getRoomUsers(currentuser.room);
-        users.forEach((user) => {
-           user.score -= 10;
-        });
-        currentuser.score = score;
-        io.to(currentuser.room).emit("roomUsers", {
-            room: currentuser.room,
-            users: getRoomUsers(currentuser.room),
-        });
-    });
-
-    socket.on('angel',score=>{
-        const currentuser = getCurrentUser(socket.id);
-        //const removeuser = userLeave(socket.id);
-        //const user = userJoin(socket.id, username, LEVEL, 0);
-        const users =  getRoomUsers(currentuser.room);
-        users.forEach((user) => {
-           user.score += 50;
-        });
-        currentuser.score = score;
-        io.to(currentuser.room).emit("roomUsers", {
-            room: currentuser.room,
-            users: getRoomUsers(currentuser.room),
-        });
-    });
 
 
     socket.on('showscore', ({ username, LEVEL, score }) => {
@@ -202,13 +101,12 @@ io.on('connection', socket => {
         });
 
     });
-    
 
-    socket.on('Gameover', () => {
+    socket.on('Gameover', LEVEL => {
         console.log(socket.id + ' serverhere');
 
         const user = getCurrentUser(socket.id);
-        socket.to(user.room).emit("FinalUsers", {
+        socket.to(LEVEL).emit("FinalUsers", {
             users: getRoomUsers(user.room)
         });
 
