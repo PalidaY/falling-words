@@ -306,27 +306,28 @@ INCATEGORYDICTIONARY = INCATEGORYDICTIONARY.map(element => {
   return element.toLowerCase();
 });
 
+
 // Concat DICTIONARY
 // EASY MEDIUM HARD SUPERHARD
 let DICTIONARY = GENERALDICTIONARY.concat(LONGWORDDICTIONARY); 
-DICTIONARY = DICTIONARY.sort((a, b) => 0.5 - Math.random()); 
-
 // WAR
 let WARDICTIONARY = GENERALDICTIONARY.concat(LONGWORDDICTIONARY,ANGELWORDDICTIONARY,FORBIDDENWORDDICTIONARY,WEAPONWORDDICTIONARY,WEAPONWORDDICTIONARY,WEAPONWORDDICTIONARY)
-WARDICTIONARY = WARDICTIONARY.sort((a, b) => 0.5 - Math.random());
-
 //WORD TRAP
 let CATDICTIONARY =INCATEGORYDICTIONARY.concat(OUTWORDDICTIONARY,FORBIDDENWORDDICTIONARY);
-CATDICTIONARY = CATDICTIONARY.sort((a, b) => 0.5 - Math.random());
-
-
-
-
-
 
 
 // Join Game
 socket.emit('joinRoom', { username, LEVEL });
+
+//shuffle Dict
+socket.emit("shuffleDictionary",{DICTIONARY,WARDICTIONARY,CATDICTIONARY});
+
+socket.on("sendDictoroom", ({newDICTIONARY,newWARDICTIONARY,newCATDICTIONARY}) =>{
+  DICTIONARY = newDICTIONARY;
+  WARDICTIONARY = newWARDICTIONARY;
+  CATDICTIONARY= newCATDICTIONARY;
+
+})
 
 //Welcome msg
 socket.on('welcomemessage', welcomemessage => {
@@ -451,12 +452,13 @@ function timedCount() {
 
 // CREATE WORD, STORES IT IN AN ARRAY & GET POSITION WHERE IT STARTS TO FALLLS
 function drawWord() {
-  
+  let word;
+  let wordDiv;
   // EASY MEDIUM HARD 
   if(currentLevel=="3000" || currentLevel=="2000"||currentLevel=="1200"){ 
-    let word = generateRandomWord(DICTIONARY);
-    console.log(word);
-    let wordDiv = document.createElement("div");
+    word = generateRandomWord(DICTIONARY);
+    console.log("EASY " +word);
+    wordDiv = document.createElement("div");
     wordDiv.innerHTML = `<p>${word}</p>`;
 
     if(GENERALDICTIONARY.includes(word)){
@@ -466,20 +468,13 @@ function drawWord() {
       wordDiv.classList.add("word");
       wordDiv.setAttribute("id", "long");
     }
-    console.log(word);
-    arrWords.push(word);
-    wordDiv.style.top = "-2px";
-    wordDiv.style.zIndex = "1";
-    wordDiv.style.left = (Math.random() * (gameWidth - 150)).toString() + "px";
-
-  //Push words
-    arrWordsDiv.push(wordDiv);
-    gameContentClass[0].appendChild(wordDiv);
-
+   
     // SUPER HARD 
   }else if(currentLevel=="1000"){
-    let word = generateRandomWord(DICTIONARY);
-    let wordDiv = document.createElement("div");
+   
+    word = generateRandomWord(DICTIONARY);
+    console.log("SH " +word);
+    wordDiv = document.createElement("div");
     wordDiv.innerHTML = `<p>${word}</p>`;
 
     if(GENERALDICTIONARY.includes(word)){
@@ -489,20 +484,11 @@ function drawWord() {
       wordDiv.classList.add("word");
       wordDiv.setAttribute("id", "longsp");
     }
-    console.log(word);
-    arrWords.push(word);
-    wordDiv.style.top = "-2px";
-    wordDiv.style.zIndex = "1";
-    wordDiv.style.left = (Math.random() * (gameWidth - 150)).toString() + "px";
-
-  //Push words
-    arrWordsDiv.push(wordDiv);
-    gameContentClass[0].appendChild(wordDiv);
-
     //WAR
   }else if(currentLevel=="1500"){
-    let word = generateRandomWord(WARDICTIONARY);
-    let wordDiv = document.createElement("div");
+    word = generateRandomWord(WARDICTIONARY);
+    console.log("War " +word);
+    wordDiv = document.createElement("div");
     wordDiv.innerHTML = `<p>${word}</p>`;
 
     if(GENERALDICTIONARY.includes(word) || FORBIDDENWORDDICTIONARY.includes(word)){
@@ -518,36 +504,30 @@ function drawWord() {
       wordDiv.classList.add("word");
       wordDiv.setAttribute("id", "angel");
     }
-    console.log(word);
-    arrWords.push(word);
-    wordDiv.style.top = "-2px";
-    wordDiv.style.zIndex = "1";
-    wordDiv.style.left = (Math.random() * (gameWidth - 150)).toString() + "px";
-
-  //Push words
-    arrWordsDiv.push(wordDiv);
-    gameContentClass[0].appendChild(wordDiv);
-
-    // Word Trap
-  }else if(currentLevel=="1400"){ 
-    let word = generateRandomWord(CATDICTIONARY);
-    let wordDiv = document.createElement("div");
+      // Word Trap
+  }else{ 
+    word = generateRandomWord(CATDICTIONARY);
+    console.log("Trap " +word);
+    wordDiv = document.createElement("div");
     wordDiv.innerHTML = `<p>${word}</p>`;
     if(INCATEGORYDICTIONARY.includes(word) || FORBIDDENWORDDICTIONARY.includes(word) || OUTWORDDICTIONARY.includes(word)){
       wordDiv.classList.add("word");
       wordDiv.setAttribute("id", "general");
     }
-    console.log(word);
-    arrWords.push(word);
-    wordDiv.style.top = "-2px";
-    wordDiv.style.zIndex = "1";
-    wordDiv.style.left = (Math.random() * (gameWidth - 150)).toString() + "px";
-
-  //Push words
-    arrWordsDiv.push(wordDiv);
-    gameContentClass[0].appendChild(wordDiv);
+   
   }
-  
+  //console.log(word);
+  arrWords.push(word);
+  wordDiv.style.top = "-2px";
+  wordDiv.style.zIndex = "1";
+  wordDiv.style.left = (Math.random() * (gameWidth - 150)).toString() + "px";
+
+//Push words
+  arrWordsDiv.push(wordDiv);
+  gameContentClass[0].appendChild(wordDiv);
+  console.log(arrWords);
+  console.log(arrWordsDiv);
+
 
 }
 
@@ -563,13 +543,22 @@ function generateRandomWord(words) {
 
 
 // GET VALUE FROM INPUT and check whether it is right or not
-function getWord() { // call
+function getWord() { // call 
+  
+  
   let inputValue = inputElementID.value.toLowerCase();
-  inputElementID.value = "";
+  setTimeout(function(){
+    console.log("getword called" + inputValue);
+    console.log(arrWords.includes(inputValue));
+    //logic
+  },20000);
+  //inputElementID.value = "";
+  
   if (arrWords.includes(inputValue)) {
-    updateScore();
+    updateScore(); 
     playSound(pointSound, 0, notPointSound);
     socket.emit("Deleteword", inputValue);
+    
      
   } else {
     playSound(notPointSound, 0, pointSound);
@@ -614,20 +603,33 @@ function updateWordPosition() {
 // UPDATE SCORE
 function updateScore() {
   if(GENERALDICTIONARY.includes(inputValue)){
+    console.log("general "+ inputValue);
     score += 10;
+
+    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    socket.emit('showscore', { username, LEVEL, score });
   }else if(LONGWORDDICTIONARY.includes(inputValue)){
+    console.log("long "+ inputValue);
     score += 50;
+
+    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    socket.emit('showscore', { username, LEVEL, score });
 
     // WAR
   }else if(inputValue == "nuclear"){
+    console.log("nuclear "+ inputValue);
      score = 0;
+
+     scoreElementID.innerHTML = `<p>Score ${score}</p>`;
      socket.emit("nuclear");
      socket.emit('Gameover');
      gameOver = true;
   }else if(inputValue == "missile"){
+    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
     socket.emit("missile",score);
     
   }else if(inputValue == "bomb"){
+    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
     socket.emit("bomb",score);
 
   }else if(["snipers","rifle",
@@ -635,26 +637,37 @@ function updateScore() {
   "gun",
   "shotgun",
   "handguns"].includes(inputValue)){
-    socket.emit("gun");
+    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    socket.emit("gun",score);
 
   }else if(["sword","knife"].includes(inputValue)){
-    socket.emit("knife");
+    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    socket.emit("knife",score);
 
   }else if(ANGELWORDDICTIONARY.includes(inputValue)){
-    socket.emit("angel");
+    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    socket.emit("angel",score);
 
   }else if(FORBIDDENWORDDICTIONARY.includes(inputValue)){
+    console.log("forbidden "+ inputValue);
     score = 0;
+    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    socket.emit('showscore', { username, LEVEL, score });
+
   }else if(INCATEGORYDICTIONARY.includes(inputValue)){
     score += 10;
+    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    socket.emit('showscore', { username, LEVEL, score });
+
   }else if(OUTWORDDICTIONARY.includes(inputValue)){
     score -= 10;
+    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    socket.emit('showscore', { username, LEVEL, score });
   }
 
 
   
-  scoreElementID.innerHTML = `<p>Score ${score}</p>`;
-  socket.emit('showscore', { username, LEVEL, score });
+  
 }
 
 
