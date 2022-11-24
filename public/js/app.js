@@ -61,14 +61,15 @@ pointSound.volume = 0.2;
 
  // DICTIONARY
  //1
-const GENERALDICTIONARY = [ "chest", "whip", "bank", "jaw", "other", "adult", "wild", "mind", "fate", "rib", "boot", "weak", "term", "cafe", "heavy", "sheep", "fly", "paper", "right", "area", "color", "clay", "role", "low", "chain", "coup", "fuss", "shock", "show", "white", "knife", "net", "rain", "space", "track", "solid", "red", "safe", "mug", "egg", "add", "slime", "mess", "liver", "attic", "sweat", "oak", "rich", "soup", "edge", "money", "lost", "club", "thaw", "valid", "bless", "fare", "no", "unity", "Mars", "linen", "brand", "sink", "pride", "range", "is", "shave", "test", "mile", "stop", "dish", "quote", "weak", "grain", "crown", "proof", "urine", "pray", "hand", "basis", "abbey", "graze", "TRUE", "loud", "grind", "dough", "lift", "fat", "horn", "glove", "twin", "bait", "lion", "young", "think", "act", "sale", "high", "ear", "build", "new", "say", "salt", "rare", "wall", "lung", "sun", "death", "bride", "snarl", "trial", "miner", "axis", "tear", "tick", "rugby", "tube", "chain", "cry", "loop", "fear", "swim", "help", "means", "pack", "story", "knife", "shine", "poem", "heart", "lead", "flock", "root", "grass", "arise", "crop", "mole", "lack", "north", "model", "shelf", "tease", "half", "good", "funny", "prey", "jaw", "cycle", "host", "far", "total", "lamb", "us", "rung", "move", "trend", "red", "pawn", "route", "pen", "peace", "tense", "ally", "mug", "sign", "liver", "bean", "back", "stuff", "essay", "stake", "cell", "rate", "fur", "chin", "arrow", "ample", "cruel", "pick", "sweet", "novel", "snarl", "talk", "smile", "burn", "chief", "reach", "flood", "money", "warn", "work", "hand", "yearn", "stay", "snack", "color", "horn", "know", "prove", 
+let GENERALDICTIONARY = [ "chest", "whip", "bank", "jaw", "other", "adult", "wild", "mind", "fate", "rib", "boot", "weak", "term", "cafe", "heavy", "sheep", "fly", "paper", "right", "area", "color", "clay", "role", "low", "chain", "coup", "fuss", "shock", "show", "white", "knife", "net", "rain", "space", "track", "solid", "red", "safe", "mug", "egg", "add", "slime", "mess", "liver", "attic", "sweat", "oak", "rich", "soup", "edge", "money", "lost", "club", "thaw", "valid", "bless", "fare", "no", "unity", "Mars", "linen", "brand", "sink", "pride", "range", "is", "shave", "test", "mile", "stop", "dish", "quote", "weak", "grain", "crown", "proof", "urine", "pray", "hand", "basis", "abbey", "graze", "TRUE", "loud", "grind", "dough", "lift", "fat", "horn", "glove", "twin", "bait", "lion", "young", "think", "act", "sale", "high", "ear", "build", "new", "say", "salt", "rare", "wall", "lung", "sun", "death", "bride", "snarl", "trial", "miner", "axis", "tear", "tick", "rugby", "tube", "chain", "cry", "loop", "fear", "swim", "help", "means", "pack", "story", "knife", "shine", "poem", "heart", "lead", "flock", "root", "grass", "arise", "crop", "mole", "lack", "north", "model", "shelf", "tease", "half", "good", "funny", "prey", "jaw", "cycle", "host", "far", "total", "lamb", "us", "rung", "move", "trend", "red", "pawn", "route", "pen", "peace", "tense", "ally", "mug", "sign", "liver", "bean", "back", "stuff", "essay", "stake", "cell", "rate", "fur", "chin", "arrow", "ample", "cruel", "pick", "sweet", "novel", "snarl", "talk", "smile", "burn", "chief", "reach", "flood", "money", "warn", "work", "hand", "yearn", "stay", "snack", "color", "horn", "know", "prove", 
 "solid" ];
 GENERALDICTIONARY = GENERALDICTIONARY.map(element => {
+
   return element.toLowerCase();
 });
 
 //2
-const LONGWORDDICTIONARY =["Antidisestablishmentarianism",
+let LONGWORDDICTIONARY =["Antidisestablishmentarianism",
  "Floccinaucinihilipilification",
  "Pneumonoultramicroscopicsilicovolcanoconiosis",
  "Pseudopseudohypoparathyroidism",
@@ -166,7 +167,7 @@ LONGWORDDICTIONARY = LONGWORDDICTIONARY.map(element => {
 });
 
 //3
-const ANGELWORDDICTIONARY =
+let ANGELWORDDICTIONARY =
 ["Stunning",
 "Charming",
 "Enticing",
@@ -202,7 +203,7 @@ ANGELWORDDICTIONARY  = ANGELWORDDICTIONARY.map(element => {
 });
 
 //4
-const FORBIDDENWORDDICTIONARY =
+let FORBIDDENWORDDICTIONARY =
 ["Asshole",
 "Bastard",
 "Bugger",
@@ -243,7 +244,7 @@ FORBIDDENWORDDICTIONARY = FORBIDDENWORDDICTIONARY.map(element => {
 });
 
 //5
-const WEAPONWORDDICTIONARY =
+let WEAPONWORDDICTIONARY =
 [ "Nuclear",  
 "Bomb",
 "Snipers",
@@ -260,7 +261,7 @@ WEAPONWORDDICTIONARY = WEAPONWORDDICTIONARY.map(element => {
 });
 
 //6
-const OUTWORDDICTIONARY =
+let OUTWORDDICTIONARY =
 ["United Nations",
 "asean",
 "Los Angeles",
@@ -300,22 +301,22 @@ OUTWORDDICTIONARY = OUTWORDDICTIONARY.map(element => {
 });
 
 //7
-const INCATEGORYDICTIONARY =[ "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua & Deps", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Rep", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Congo {Democratic Rep}", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland {Republic}", "Israel", "Italy", "Ivory Coast", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea North", "Korea South", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar, {Burma}", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russian Federation", "Rwanda", "St Kitts & Nevis", "St Lucia", "Saint Vincent & the Grenadines", "Samoa", "San Marino", "Sao Tome & Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad & Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe" ];
+let INCATEGORYDICTIONARY =[ "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua & Deps", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Rep", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Congo {Democratic Rep}", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland {Republic}", "Israel", "Italy", "Ivory Coast", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea North", "Korea South", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar, {Burma}", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russian Federation", "Rwanda", "St Kitts & Nevis", "St Lucia", "Saint Vincent & the Grenadines", "Samoa", "San Marino", "Sao Tome & Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad & Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe" ];
 INCATEGORYDICTIONARY = INCATEGORYDICTIONARY.map(element => {
   return element.toLowerCase();
 });
 
 // Concat DICTIONARY
 // EASY MEDIUM HARD SUPERHARD
-const DICTIONARY = GENERALDICTIONARY.concat(LONGWORDDICTIONARY); 
+let DICTIONARY = GENERALDICTIONARY.concat(LONGWORDDICTIONARY); 
 DICTIONARY = DICTIONARY.sort((a, b) => 0.5 - Math.random()); 
 
 // WAR
-const WARDICTIONARY = GENERALDICTIONARY.concat(LONGWORDDICTIONARY,ANGELWORDDICTIONARY,FORBIDDENWORDDICTIONARY,WEAPONWORDDICTIONARY,WEAPONWORDDICTIONARY,WEAPONWORDDICTIONARY)
+let WARDICTIONARY = GENERALDICTIONARY.concat(LONGWORDDICTIONARY,ANGELWORDDICTIONARY,FORBIDDENWORDDICTIONARY,WEAPONWORDDICTIONARY,WEAPONWORDDICTIONARY,WEAPONWORDDICTIONARY)
 WARDICTIONARY = WARDICTIONARY.sort((a, b) => 0.5 - Math.random());
 
 //WORD TRAP
-const CATDICTIONARY =INCATEGORYDICTIONARY.concat(OUTWORDDICTIONARY,FORBIDDENWORDDICTIONARY);
+let CATDICTIONARY =INCATEGORYDICTIONARY.concat(OUTWORDDICTIONARY,FORBIDDENWORDDICTIONARY);
 CATDICTIONARY = CATDICTIONARY.sort((a, b) => 0.5 - Math.random());
 
 
@@ -453,60 +454,100 @@ function drawWord() {
   
   // EASY MEDIUM HARD 
   if(currentLevel=="3000" || currentLevel=="2000"||currentLevel=="1200"){ 
-    const word = generateRandomWord(DICTIONARY);
+    let word = generateRandomWord(DICTIONARY);
+    console.log(word);
     let wordDiv = document.createElement("div");
     wordDiv.innerHTML = `<p>${word}</p>`;
 
     if(GENERALDICTIONARY.includes(word)){
-      wordDiv.classList.add("word general");
+      wordDiv.classList.add("word");
+      wordDiv.setAttribute("id", "general");
     }else{
-      wordDiv.classList.add("word long");
+      wordDiv.classList.add("word");
+      wordDiv.setAttribute("id", "long");
     }
+    console.log(word);
+    arrWords.push(word);
+    wordDiv.style.top = "-2px";
+    wordDiv.style.zIndex = "1";
+    wordDiv.style.left = (Math.random() * (gameWidth - 150)).toString() + "px";
+
+  //Push words
+    arrWordsDiv.push(wordDiv);
+    gameContentClass[0].appendChild(wordDiv);
+
     // SUPER HARD 
   }else if(currentLevel=="1000"){
-    const word = generateRandomWord(DICTIONARY);
+    let word = generateRandomWord(DICTIONARY);
     let wordDiv = document.createElement("div");
     wordDiv.innerHTML = `<p>${word}</p>`;
+
     if(GENERALDICTIONARY.includes(word)){
-      wordDiv.classList.add("word generalsp");
+      wordDiv.classList.add("word");
+      wordDiv.setAttribute("id", "generalsp");
     }else{
-      wordDiv.classList.add("word longsp");
+      wordDiv.classList.add("word");
+      wordDiv.setAttribute("id", "longsp");
     }
+    console.log(word);
+    arrWords.push(word);
+    wordDiv.style.top = "-2px";
+    wordDiv.style.zIndex = "1";
+    wordDiv.style.left = (Math.random() * (gameWidth - 150)).toString() + "px";
+
+  //Push words
+    arrWordsDiv.push(wordDiv);
+    gameContentClass[0].appendChild(wordDiv);
+
     //WAR
   }else if(currentLevel=="1500"){
-    const word = generateRandomWord(WARDICTIONARY);
+    let word = generateRandomWord(WARDICTIONARY);
     let wordDiv = document.createElement("div");
     wordDiv.innerHTML = `<p>${word}</p>`;
 
     if(GENERALDICTIONARY.includes(word) || FORBIDDENWORDDICTIONARY.includes(word)){
-      wordDiv.classList.add("word general");
+      wordDiv.classList.add("word");
+      wordDiv.setAttribute("id", "general");
     }else if(LONGWORDDICTIONARY.includes(word)){
-      wordDiv.classList.add("word long");
+      wordDiv.classList.add("word");
+      wordDiv.setAttribute("id", "long");
     }else if(WEAPONWORDDICTIONARY.includes(word)){
-      wordDiv.classList.add("word weapon");
+      wordDiv.classList.add("word");
+      wordDiv.setAttribute("id", "weapon");
     }else if(ANGELWORDDICTIONARY.includes(word)){
-      wordDiv.classList.add("word angel");
+      wordDiv.classList.add("word");
+      wordDiv.setAttribute("id", "angel");
     }
+    console.log(word);
+    arrWords.push(word);
+    wordDiv.style.top = "-2px";
+    wordDiv.style.zIndex = "1";
+    wordDiv.style.left = (Math.random() * (gameWidth - 150)).toString() + "px";
+
+  //Push words
+    arrWordsDiv.push(wordDiv);
+    gameContentClass[0].appendChild(wordDiv);
+
     // Word Trap
   }else if(currentLevel=="1400"){ 
-    const word = generateRandomWord(CATDICTIONARY);
+    let word = generateRandomWord(CATDICTIONARY);
     let wordDiv = document.createElement("div");
     wordDiv.innerHTML = `<p>${word}</p>`;
     if(INCATEGORYDICTIONARY.includes(word) || FORBIDDENWORDDICTIONARY.includes(word) || OUTWORDDICTIONARY.includes(word)){
-      wordDiv.classList.add("word general");
+      wordDiv.classList.add("word");
+      wordDiv.setAttribute("id", "general");
     }
-  }
-  
-  console.log(word);
-  arrWords.push(word);
-
-  wordDiv.style.top = "-2px";
-  wordDiv.style.zIndex = "1";
-  wordDiv.style.left = (Math.random() * (gameWidth - 150)).toString() + "px";
+    console.log(word);
+    arrWords.push(word);
+    wordDiv.style.top = "-2px";
+    wordDiv.style.zIndex = "1";
+    wordDiv.style.left = (Math.random() * (gameWidth - 150)).toString() + "px";
 
   //Push words
-  arrWordsDiv.push(wordDiv);
-  gameContentClass[0].appendChild(wordDiv);
+    arrWordsDiv.push(wordDiv);
+    gameContentClass[0].appendChild(wordDiv);
+  }
+  
 
 }
 
