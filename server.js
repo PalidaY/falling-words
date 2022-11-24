@@ -90,6 +90,96 @@ io.on('connection', socket => {
 
 
 
+    socket.on('nuclear',()=>{
+        const user = getCurrentUser(socket.id);
+        //const removeuser = userLeave(socket.id);
+        //const user = userJoin(socket.id, username, LEVEL, 0);
+        const users =  getRoomUsers(user.room);
+        users.forEach((user) => {
+           user.score = 0;
+        });
+        
+        io.to(user.room).emit("roomUsers", {
+            room: user.room,
+            users: getRoomUsers(user.room),
+        });
+        
+    });
+
+    socket.on('bomb',score=>{
+        const currentuser = getCurrentUser(socket.id);
+        //const removeuser = userLeave(socket.id);
+        //const user = userJoin(socket.id, username, LEVEL, 0);
+        const users =  getRoomUsers(currentuser.room);
+        users.forEach((user) => {
+           user.score -= 50;
+        });
+        currentuser.score = score;
+        io.to(currentuser.room).emit("roomUsers", {
+            room: currentuser.room,
+            users: getRoomUsers(currentuser.room),
+        });
+    });
+
+    socket.on('missile',score=>{
+        const currentuser = getCurrentUser(socket.id);
+        //const removeuser = userLeave(socket.id);
+        //const user = userJoin(socket.id, username, LEVEL, 0);
+        const users =  getRoomUsers(currentuser.room);
+        users.forEach((user) => {
+           user.score -= 100;
+        });
+        currentuser.score = score;
+        io.to(currentuser.room).emit("roomUsers", {
+            room: currentuser.room,
+            users: getRoomUsers(currentuser.room),
+        });
+    });
+    socket.on('gun',score=>{
+        const currentuser = getCurrentUser(socket.id);
+        //const removeuser = userLeave(socket.id);
+        //const user = userJoin(socket.id, username, LEVEL, 0);
+        const users =  getRoomUsers(currentuser.room);
+        users.forEach((user) => {
+           user.score -= 25;
+        });
+        currentuser.score = score;
+        io.to(currentuser.room).emit("roomUsers", {
+            room: currentuser.room,
+            users: getRoomUsers(currentuser.room),
+        });
+    });
+
+    socket.on('knife',score=>{
+        const currentuser = getCurrentUser(socket.id);
+        //const removeuser = userLeave(socket.id);
+        //const user = userJoin(socket.id, username, LEVEL, 0);
+        const users =  getRoomUsers(currentuser.room);
+        users.forEach((user) => {
+           user.score -= 10;
+        });
+        currentuser.score = score;
+        io.to(currentuser.room).emit("roomUsers", {
+            room: currentuser.room,
+            users: getRoomUsers(currentuser.room),
+        });
+    });
+
+    socket.on('angel',score=>{
+        const currentuser = getCurrentUser(socket.id);
+        //const removeuser = userLeave(socket.id);
+        //const user = userJoin(socket.id, username, LEVEL, 0);
+        const users =  getRoomUsers(currentuser.room);
+        users.forEach((user) => {
+           user.score += 50;
+        });
+        currentuser.score = score;
+        io.to(currentuser.room).emit("roomUsers", {
+            room: currentuser.room,
+            users: getRoomUsers(currentuser.room),
+        });
+    });
+
 
     socket.on('showscore', ({ username, LEVEL, score }) => {
         console.log('showscore');
@@ -102,6 +192,7 @@ io.on('connection', socket => {
         });
 
     });
+    
 
     socket.on('Gameover', () => {
         console.log(socket.id + ' serverhere');

@@ -39,7 +39,15 @@ h6 {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.word {
+.word.general {
+  position: absolute;
+  background-color: rgb(57, 198, 83);
+  padding: 0 10;
+  width: auto;
+  height: auto;
+  text-align: center;
+}
+.word.long{
   position: absolute;
   background-color: red;
   padding: 0 10;

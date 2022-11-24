@@ -3,7 +3,7 @@
 
 // HTTP GET LEVEL FROM index.html
 
-const socket= io();
+const socket = io();
 const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
 const welcome = document.getElementById('welcome');
@@ -34,10 +34,14 @@ const gameWidth = gameContentID.clientWidth;
 const gameHeight = gameContentID.clientHeight;
 
 
+// SCORE RESET
+// WAR INITIAL SCORE
+if(currentLevel == "1500"){ 
+  let score = 1000;
+}else{
+  let score = 0;
+}
 
-
-
-let score = 0;
 let gameOver = false;
 let arrWords = [];
 let arrWordsDiv = [];
@@ -55,131 +59,269 @@ startGameSound.volume = 0.5;
 gameoverSound.volume = 0.5;
 pointSound.volume = 0.2;
 
-const DICTIONARY = [
-  "school",
-  "college",
-  "btc",
-  "elon",
-  "musk",
-  "courses",
-  "internet",
-  "patience",
-  "argentina",
-  "motivation",
-  "tech",
-  "info",
-  "send",
-  "mate",
-  "reactjs",
-  "game",
-  "brusca",
-  "graphic",
-  "copper",
-  "boca",
-  "lie",
-  "case",
-  "expand",
-  "absence",
-  "football",
-  "native",
-  "demon",
-  "thread",
-  "award",
-  "tycoon",
-  "riquelme",
-  "still",
-  "empirical",
-  "doll",
-  "java",
-  "ackerman",
-  "dinner",
-  "register",
-  "proof",
-  "script",
-  "wrist",
-  "sulphur",
-  "selection",
-  "slam",
-  "grandmother",
-  "assertive",
-  "eaux",
-  "javascript",
-  "admiration",
-  "recognize",
-  "roll",
-  "bank",
-  "reactor",
-  "gradient",
-  "ribbon",
-  "slayer",
-  "pleasant",
-  "path",
-  "draft",
-  "polish",
-  "art",
-  "hook",
-  "messi",
-  "flow",
-  "operational",
-  "transaction",
-  "physics",
-  "rally",
-  "fold",
-  "housewife",
-  "suspicion",
-  "craft",
-  "objective",
-  "grass",
-  "reckless",
-  "manual",
-  "test",
-  "switch",
-  "diegote",
-  "silver",
-  "take",
-  "president",
-  "constituency",
-  "basis",
-  "cluster",
-  "psychology",
-  "cat",
-  "minimize",
-  "hide",
-  "chord",
-  "brilliance",
-  "official",
-  "condition",
-  "guideline",
-  "apology",
-  "general",
-  "sock",
-  "hunting",
-  "kinship",
-  "change",
-  "departure",
-  "mile",
-  "ancestor",
-  "diego",
-  "cheat",
-  "taxi",
-  "tight",
-  "moment",
-  "dimension",
-  "family",
-  "vegan",
-  "projection",
-  "demonstration",
-  "pony",
-  "standard",
-  "appendix",
-  "reluctance",
-  "gian",
-  "davinci",
-  "system",
-  "analyst",
-  "levi",
-];
-const 
+ // DICTIONARY
+ //1
+const GENERALDICTIONARY = [ "chest", "whip", "bank", "jaw", "other", "adult", "wild", "mind", "fate", "rib", "boot", "weak", "term", "cafe", "heavy", "sheep", "fly", "paper", "right", "area", "color", "clay", "role", "low", "chain", "coup", "fuss", "shock", "show", "white", "knife", "net", "rain", "space", "track", "solid", "red", "safe", "mug", "egg", "add", "slime", "mess", "liver", "attic", "sweat", "oak", "rich", "soup", "edge", "money", "lost", "club", "thaw", "valid", "bless", "fare", "no", "unity", "Mars", "linen", "brand", "sink", "pride", "range", "is", "shave", "test", "mile", "stop", "dish", "quote", "weak", "grain", "crown", "proof", "urine", "pray", "hand", "basis", "abbey", "graze", "TRUE", "loud", "grind", "dough", "lift", "fat", "horn", "glove", "twin", "bait", "lion", "young", "think", "act", "sale", "high", "ear", "build", "new", "say", "salt", "rare", "wall", "lung", "sun", "death", "bride", "snarl", "trial", "miner", "axis", "tear", "tick", "rugby", "tube", "chain", "cry", "loop", "fear", "swim", "help", "means", "pack", "story", "knife", "shine", "poem", "heart", "lead", "flock", "root", "grass", "arise", "crop", "mole", "lack", "north", "model", "shelf", "tease", "half", "good", "funny", "prey", "jaw", "cycle", "host", "far", "total", "lamb", "us", "rung", "move", "trend", "red", "pawn", "route", "pen", "peace", "tense", "ally", "mug", "sign", "liver", "bean", "back", "stuff", "essay", "stake", "cell", "rate", "fur", "chin", "arrow", "ample", "cruel", "pick", "sweet", "novel", "snarl", "talk", "smile", "burn", "chief", "reach", "flood", "money", "warn", "work", "hand", "yearn", "stay", "snack", "color", "horn", "know", "prove", 
+"solid" ];
+GENERALDICTIONARY = GENERALDICTIONARY.map(element => {
+  return element.toLowerCase();
+});
+
+//2
+const LONGWORDDICTIONARY =["Antidisestablishmentarianism",
+ "Floccinaucinihilipilification",
+ "Pneumonoultramicroscopicsilicovolcanoconiosis",
+ "Pseudopseudohypoparathyroidism",
+ "Psychoneuroendocrinological",
+ "Sesquipedalian",
+ "Hippopotomonstrosesquippedaliophobia",
+ "Incomprehensibilities",
+ "Uncopyrightable",
+ "Dermatoglyphics",
+"Psychophysicotherapeutics",
+"Otorhinolaryngological",
+"Juxtaposition",
+"Onomatopoeia",
+"Ablutophobia",
+"Absorbefacient",
+"Adiathermancy",
+"Agglutination",
+"Arachibutyrophobia",
+"Aurantiaceous",
+"Automatonophobia",
+"Autothaumaturgist",
+"Autotonsorialist",
+"Automysophobia",
+"Ballistocardiograph",
+"Bathythermograph", 
+"Batrachomyomachy",
+"Batrachophagous", 
+"Bicrescentic",
+"Blandiloquence",
+"Brachydactylous",
+"Brobdingnagian",
+"Bouleversement",
+"Boustrophedon",
+"Cacodemomania",
+"Caesaropapism", 
+"Catapedamania",
+"Cephalonomancy", 
+"Ceruminiferous",
+"Chaetophorous",
+"Cheiloproclitic",
+"Cholangiocholecystocholedochectomy",
+"Chronosynchronicity",
+"Cycloganoidei",
+"Dactylopterous",
+"Defecaloesiophobia",
+"Dendrochronology",
+"Deorsumversion",
+"Dermatoglyphics",
+"Dermatopathophobia",
+"Didaskaleinophobia",
+"Dishabiliophobia",
+"Dysmorphophobia",
+"Ecclesiasticus",
+"Edriophthalmous",
+"Electroencephalograph",
+"Electrodynamometer",
+"Eleutherophobia", 
+"Epiphenomenalism",
+"Ephemeromorph",
+"Epistaxiophobia",
+"Ethnomethodology",
+"Extemporaneousness",
+"Febrifacient",
+"Ferriprussiate", 
+"Flagelliferous",
+"Flibbertigibbet",
+"Fibriophobia",
+"Fibrochondrosteal",
+"Fissigemmation",
+"Forisfamiliation",
+"Frankalmoigne",
+"Frumentaceous",
+"Galactodensimeter",
+"Gastroduodenitis",
+"Gastrohysterotomy",
+"Generalissimo",
+"Gephydrophobia",
+"Germanophilia", 
+"Gluconeogenesis",
+"Graminivorous",
+"Grammaticaster", 
+"Gynotikolobomassophile",
+"Haematogenesis", 
+"Haematodynamometer",
+"Haussmannize",
+"Hellenologophobia", 
+"Helioseismology", 
+"Hexakosioihexekontahexaphobia",
+"Honorificabilitudinitatibus",
+"Honorificabilitudinity", 
+"Hydrometeorology",
+"Hypercatalectic"];
+LONGWORDDICTIONARY = LONGWORDDICTIONARY.map(element => {
+  return element.toLowerCase();
+});
+
+//3
+const ANGELWORDDICTIONARY =
+["Stunning",
+"Charming",
+"Enticing",
+"Best",
+"Breathtaking",
+"Fetching",
+"Intriguing",
+"Unique",
+"Generous",
+"Wondrous",
+"Elegant",
+"Lovely",
+"Wonderful",
+"Talented",
+"Brilliant",
+"Incredible",
+"Amazing",
+"Spectacular",
+"Marvelous",
+"Captivating",
+"Appealing",
+"Enchanting",
+"Admirable",
+"Adorable",
+"Awesome",
+"Beautiful",
+"Fantastic",
+"Gorgeous",
+"Kindness",
+"Perfect"] ;
+ANGELWORDDICTIONARY  = ANGELWORDDICTIONARY.map(element => {
+  return element.toLowerCase();
+});
+
+//4
+const FORBIDDENWORDDICTIONARY =
+["Asshole",
+"Bastard",
+"Bugger",
+"Bloody hell",
+"Damn",
+"Holy cow",
+"Drat",
+"Judas Priest",
+"Barnacles",
+"Cumbubble",
+"fuck off",
+"Shitbag",
+"Shit",
+"fuck",
+"Corn Nuts",
+"Piss off",
+"Dagnabbit",
+"Crikey",
+"Bollocks",
+"Twat",
+"Knobhead",
+"Rubbish",
+"Cack",
+"Wanker",
+"nonce",
+"wazzock",
+"Jizzstain",
+"shitpouch",
+"arsebadger",
+"Bawbag",
+"Dang it",
+"Damn it",
+"Noob",
+"douche nozzle",
+"Fuckwit"] ;
+FORBIDDENWORDDICTIONARY = FORBIDDENWORDDICTIONARY.map(element => {
+  return element.toLowerCase();
+});
+
+//5
+const WEAPONWORDDICTIONARY =
+[ "Nuclear",  
+"Bomb",
+"Snipers",
+"Gun",
+"Sword",
+"Knife",
+"Missile",
+"Rifle",
+"Pistols",
+"Shotgun",
+"Handguns"] ;
+WEAPONWORDDICTIONARY = WEAPONWORDDICTIONARY.map(element => {
+  return element.toLowerCase();
+});
+
+//6
+const OUTWORDDICTIONARY =
+["United Nations",
+"asean",
+"Los Angeles",
+"Chicago",
+"San Diego",
+"Columbus",
+"Washington",
+"Boston",
+"Las Vegas",
+"Miami",
+"York",
+"Wells",
+"London",
+"APEC",
+"Peterborough",
+"Portsmouth",
+"Biden",
+"Trump",
+"Bangkok",
+"Pattaya",
+"Chiang Mai",
+"Hat Yai",
+"Phuket",
+"Ko Samui",
+"Yala",
+"Taipei",
+"Hong Kong",
+"Macau",
+"Beijing",
+"Shanghai",
+"Toronto",
+"Mumbai",
+"Delhi",
+"Kolkata"] ;
+OUTWORDDICTIONARY = OUTWORDDICTIONARY.map(element => {
+  return element.toLowerCase();
+});
+
+//7
+const INCATEGORYDICTIONARY =[ "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua & Deps", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Rep", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Congo {Democratic Rep}", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland {Republic}", "Israel", "Italy", "Ivory Coast", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea North", "Korea South", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar, {Burma}", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russian Federation", "Rwanda", "St Kitts & Nevis", "St Lucia", "Saint Vincent & the Grenadines", "Samoa", "San Marino", "Sao Tome & Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad & Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe" ];
+INCATEGORYDICTIONARY = INCATEGORYDICTIONARY.map(element => {
+  return element.toLowerCase();
+});
+
+// Concat DICTIONARY
+// EASY MEDIUM HARD SUPERHARD
+const DICTIONARY = GENERALDICTIONARY.concat(LONGWORDDICTIONARY); 
+DICTIONARY = DICTIONARY.sort((a, b) => 0.5 - Math.random()); 
+
+// WAR
+const WARDICTIONARY = GENERALDICTIONARY.concat(LONGWORDDICTIONARY,ANGELWORDDICTIONARY,FORBIDDENWORDDICTIONARY,WEAPONWORDDICTIONARY,WEAPONWORDDICTIONARY,WEAPONWORDDICTIONARY)
+WARDICTIONARY = WARDICTIONARY.sort((a, b) => 0.5 - Math.random());
+
+//WORD TRAP
+const CATDICTIONARY =INCATEGORYDICTIONARY.concat(OUTWORDDICTIONARY,FORBIDDENWORDDICTIONARY);
+CATDICTIONARY = CATDICTIONARY.sort((a, b) => 0.5 - Math.random());
+
+
+
+
+
 
 
 // Join Game
@@ -308,13 +450,56 @@ function timedCount() {
 
 // CREATE WORD, STORES IT IN AN ARRAY & GET POSITION WHERE IT STARTS TO FALLLS
 function drawWord() {
-  const word = generateRandomWord(DICTIONARY);
+  
+  // EASY MEDIUM HARD 
+  if(currentLevel=="3000" || currentLevel=="2000"||currentLevel=="1200"){ 
+    const word = generateRandomWord(DICTIONARY);
+    let wordDiv = document.createElement("div");
+    wordDiv.innerHTML = `<p>${word}</p>`;
+
+    if(GENERALDICTIONARY.includes(word)){
+      wordDiv.classList.add("word general");
+    }else{
+      wordDiv.classList.add("word long");
+    }
+    // SUPER HARD 
+  }else if(currentLevel=="1000"){
+    const word = generateRandomWord(DICTIONARY);
+    let wordDiv = document.createElement("div");
+    wordDiv.innerHTML = `<p>${word}</p>`;
+    if(GENERALDICTIONARY.includes(word)){
+      wordDiv.classList.add("word generalsp");
+    }else{
+      wordDiv.classList.add("word longsp");
+    }
+    //WAR
+  }else if(currentLevel=="1500"){
+    const word = generateRandomWord(WARDICTIONARY);
+    let wordDiv = document.createElement("div");
+    wordDiv.innerHTML = `<p>${word}</p>`;
+
+    if(GENERALDICTIONARY.includes(word) || FORBIDDENWORDDICTIONARY.includes(word)){
+      wordDiv.classList.add("word general");
+    }else if(LONGWORDDICTIONARY.includes(word)){
+      wordDiv.classList.add("word long");
+    }else if(WEAPONWORDDICTIONARY.includes(word)){
+      wordDiv.classList.add("word weapon");
+    }else if(ANGELWORDDICTIONARY.includes(word)){
+      wordDiv.classList.add("word angel");
+    }
+    // Word Trap
+  }else if(currentLevel=="1400"){ 
+    const word = generateRandomWord(CATDICTIONARY);
+    let wordDiv = document.createElement("div");
+    wordDiv.innerHTML = `<p>${word}</p>`;
+    if(INCATEGORYDICTIONARY.includes(word) || FORBIDDENWORDDICTIONARY.includes(word) || OUTWORDDICTIONARY.includes(word)){
+      wordDiv.classList.add("word general");
+    }
+  }
+  
   console.log(word);
   arrWords.push(word);
-  let wordDiv = document.createElement("div");
 
-  wordDiv.innerHTML = `<p>${word}</p>`;
-  wordDiv.classList.add("word");
   wordDiv.style.top = "-2px";
   wordDiv.style.zIndex = "1";
   wordDiv.style.left = (Math.random() * (gameWidth - 150)).toString() + "px";
@@ -344,7 +529,7 @@ function getWord() { // call
     updateScore();
     playSound(pointSound, 0, notPointSound);
     socket.emit("Deleteword", inputValue);
-
+     
   } else {
     playSound(notPointSound, 0, pointSound);
   }
@@ -387,7 +572,46 @@ function updateWordPosition() {
 
 // UPDATE SCORE
 function updateScore() {
-  score += 10;
+  if(GENERALDICTIONARY.includes(inputValue)){
+    score += 10;
+  }else if(LONGWORDDICTIONARY.includes(inputValue)){
+    score += 50;
+
+    // WAR
+  }else if(inputValue == "nuclear"){
+     score = 0;
+     socket.emit("nuclear");
+     socket.emit('Gameover');
+     gameOver = true;
+  }else if(inputValue == "missile"){
+    socket.emit("missile",score);
+    
+  }else if(inputValue == "bomb"){
+    socket.emit("bomb",score);
+
+  }else if(["snipers","rifle",
+  "pistols",
+  "gun",
+  "shotgun",
+  "handguns"].includes(inputValue)){
+    socket.emit("gun");
+
+  }else if(["sword","knife"].includes(inputValue)){
+    socket.emit("knife");
+
+  }else if(ANGELWORDDICTIONARY.includes(inputValue)){
+    socket.emit("angel");
+
+  }else if(FORBIDDENWORDDICTIONARY.includes(inputValue)){
+    score = 0;
+  }else if(INCATEGORYDICTIONARY.includes(inputValue)){
+    score += 10;
+  }else if(OUTWORDDICTIONARY.includes(inputValue)){
+    score -= 10;
+  }
+
+
+  
   scoreElementID.innerHTML = `<p>Score ${score}</p>`;
   socket.emit('showscore', { username, LEVEL, score });
 }
@@ -446,11 +670,16 @@ socket.on('Winners', ({ users }) => {
     winner += user.username + `<br>`;
   });
   console.log(socket.id + " " + winner);
-  gameContentID.innerHTML = modalGameOver();
+  if(currentLevel=="1500" && score <= 0){
+    gameContentID.innerHTML = modalWarOver();
+  }else{
+    gameContentID.innerHTML = modalGameOver();
+  }
+  
   playSound(gameoverSound, 8, startGameSound);
   gameoverSound.style.zIndex = 1;
   inputElementID.setAttribute("disabled", true);
-
+t
 
 });
 
@@ -461,6 +690,26 @@ function modalGameOver() {
       <div class="modal-gameover col-8">
       <h1> Game Over </h2>
       <h2> The winner is ${winner} <h2>
+      <h2> Your Score: ${score} </h2>
+      <ul id="users"></ul>
+      <button id="Restart" class="my-2 btn-modal">
+        <a href="game.html?username=${username}&level=${currentLevel}">
+          <h6>Restart</h6>
+        </a>
+      </button>
+      <button id="Menu" class="my-2 btn-modal">
+        <a href="index.html">
+          <h6>Back to menu</h6>
+        </a>
+      </button>
+    </div>
+  `;
+}
+function modalWarOver() {
+  return `
+      <div class="modal-gameover col-8">
+      <h1> Game Over </h2>
+      <h2> You DEAD <h2>
       <h2> Your Score: ${score} </h2>
       <ul id="users"></ul>
       <button id="Restart" class="my-2 btn-modal">
