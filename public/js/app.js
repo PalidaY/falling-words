@@ -3,7 +3,7 @@
 
 // HTTP GET LEVEL FROM index.html
 
-const socket = io();
+const socket= io();
 const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
 const welcome = document.getElementById('welcome');
@@ -179,6 +179,7 @@ const DICTIONARY = [
   "analyst",
   "levi",
 ];
+const 
 
 
 // Join Game
