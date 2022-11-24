@@ -2,6 +2,14 @@
   0%{ opacity: 1;}
   100%{ opacity: 0;}
 }
+@keyframes textzoom{
+  0%{
+    font-size: 10px;
+  }
+  100%{
+    font-size: 30px;
+  }
+}
 
 h2 {
   margin-bottom: 1.5rem;
@@ -93,6 +101,9 @@ h6 {
   text-align: center;
 }
 #angel.word {
+  /*apply animation*/
+  animation: textzoom 2s infinite alternate;
+  /*style the text*/
   position: absolute;
   background-color: rgb(177, 31, 121);
   padding: 0 10;
@@ -101,8 +112,11 @@ h6 {
   text-align: center;
 }
 #weapon.word {
+  /*apply animation*/
+  animation: textzoom 2s infinite alternate;
+  /*style the text*/
   position: absolute;
-  background-color: rgb(145, 22, 18);
+  background-color: rgb(177, 31, 121);
   padding: 0 10;
   width: auto;
   height: auto;
