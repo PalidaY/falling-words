@@ -455,6 +455,9 @@ function outputUsers(users) {
     const li = document.createElement('li');
     li.innerText = user.username + ' score: ' + user.score;
     userList.appendChild(li);
+    if(user.username==username){
+      scoreElementID.innerHTML = `<p>Score ${user.score}</p>`;
+    }
   });
 
 }
@@ -704,14 +707,14 @@ function updateScore(inputValue) {
     playSound(pointSound, 0, notPointSound);
     score += 10;
 
-    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    //scoreElementID.innerHTML = `<p>Score ${score}</p>`;
     socket.emit('showscore', { username, LEVEL, score });
   }else if(LONGWORDDICTIONARY.includes(inputValue)){
     console.log("long "+ inputValue);
     playSound(pointSound, 0, notPointSound);
     score += 50;
 
-    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    //scoreElementID.innerHTML = `<p>Score ${score}</p>`;
     socket.emit('showscore', { username, LEVEL, score });
 
     // WAR
@@ -719,55 +722,51 @@ function updateScore(inputValue) {
     
      playSound(pointSound, 0, notPointSound);
      score = 0;
-
-     scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    // scoreElementID.innerHTML = `<p>Score ${score}</p>`;
      socket.emit("nuclear",score);
-     socket.emit('Gameover');
-     gameOver = true;
+     
   }else if(inputValue == "missile"){
     playSound(pointSound, 0, notPointSound);
-    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+      
     socket.emit("missile",score);
     
   }else if(inputValue == "bomb"){
     playSound(pointSound, 0, notPointSound);
-    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+        
     socket.emit("bomb",score);
 
-  }else if((["snipers","rifle",
-  "pistols",
-  "gun",
+  }else if((["snipers","rifle","pistols","gun",
   "shotgun",
   "handguns"]).includes(inputValue)){
     playSound(pointSound, 0, notPointSound);
-    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+      
     socket.emit("gun",score);
 
   }else if((["sword","knife"]).includes(inputValue)){
     playSound(pointSound, 0, notPointSound);
-    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+       
     socket.emit("knife",score);
 
   }else if(ANGELWORDDICTIONARY.includes(inputValue)){
     playSound(pointSound, 0, notPointSound);
-    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    
     socket.emit("angel",score);
   }else if(FORBIDDENWORDDICTIONARY.includes(inputValue)){
     playSound(pointSound, 0, notPointSound);
     score = 0;
-    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    //scoreElementID.innerHTML = `<p>Score ${score}</p>`;
     socket.emit('showscore', { username, LEVEL, score });
 
   }else if(INCATEGORYDICTIONARY.includes(inputValue)){
     playSound(pointSound, 0, notPointSound);
     score += 10;
-    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    //scoreElementID.innerHTML = `<p>Score ${score}</p>`;
     socket.emit('showscore', { username, LEVEL, score });
 
   }else if(OUTWORDDICTIONARY.includes(inputValue)){
     playSound(notPointSound, 0, pointSound);
     score -= 10;
-    scoreElementID.innerHTML = `<p>Score ${score}</p>`;
+    //scoreElementID.innerHTML = `<p>Score ${score}</p>`;
     socket.emit('showscore', { username, LEVEL, score });
   } 
 }
