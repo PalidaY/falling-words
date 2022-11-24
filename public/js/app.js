@@ -551,17 +551,11 @@ function getWord() { // call
   inputElementID.value = "";
   
 
-  setTimeout(function(){
-    console.log("getword called" + inputValue);
-    console.log(arrWords.includes(inputValue));
-    //logic
-  },20000);
-  
-  
+   
   if (arrWords.includes(inputValue)) {
     updateScore(); 
     playSound(pointSound, 0, notPointSound);
-    socket.emit("Deleteword", inputValue);
+    //socket.emit("Deleteword", inputValue);
     
      
   } else {
