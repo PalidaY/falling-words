@@ -51,8 +51,13 @@ io.on('connection', socket => {
 
     //console.log(io.of("/").adapter);
     socket.on("joinRoom", ({ username, LEVEL }) => {
+         
 
         const user = userJoin(socket.id, username, LEVEL, 0);
+        //WAR
+        if(LEVEL == "2600"){
+            user.score = 500;
+        }
 
         socket.join(user.room);
         // Emit from server to single client
@@ -119,7 +124,7 @@ io.on('connection', socket => {
         const users = getRoomUsers(user.room);
         users.forEach((user) => {
             user.score -= 100;
-          });
+        });
         user.score = score;
         io.to(user.room).emit("roomUsers", {
             room: user.room,

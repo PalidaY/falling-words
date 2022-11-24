@@ -40,8 +40,10 @@ const gameHeight = gameContentID.clientHeight;
 let score;
 if(currentLevel==2600){
  score = 500;
+ scoreElementID.innerHTML = `<p>Score ${score}</p>`;
 }else{
   score = 0;
+  scoreElementID.innerHTML = `<p>Score ${score}</p>`;
 }
 
 let gameOver = false;
