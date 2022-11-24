@@ -24,17 +24,17 @@ ul {
 }
 
 li:first-of-type {
-  color: greenyellow;
+  color:  rgb(0, 255, 128);
 }
 
-.cyan {
+.friend {
   color: cyan;
 }
 
-.lose {
+.time{
   color: red;
 }
 
-.fast {
-  color: coral;
+.fastly{
+  color: rgb(80, 255, 118);
 }
