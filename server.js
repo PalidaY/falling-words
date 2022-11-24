@@ -73,6 +73,16 @@ io.on('connection', socket => {
 
     });
 
+    socket.on("shuffleDictionary",({DICTIONARY,WARDICTIONARY,CATDICTIONARY})=>{
+        
+        const newDICTIONARY = DICTIONARY.sort((a, b) => 0.5 - Math.random());
+        const newWARDICTIONARY = WARDICTIONARY.sort((a, b) => 0.5 - Math.random());
+        const newCATDICTIONARY = CATDICTIONARY.sort((a, b) => 0.5 - Math.random()); 
+        const user = getCurrentUser(socket.id);
+        io.to(user.room).emit("sendDictoroom", {newDICTIONARY,newWARDICTIONARY,newCATDICTIONARY});
+
+    });
+
     socket.on('buttonPressed', () => {
         const user = getCurrentUser(socket.id); 
         console.log(user.room);
@@ -80,7 +90,7 @@ io.on('connection', socket => {
 
     });
 
-
+    
 
     socket.on("Deleteword", inputValue => {
         console.log(inputValue);
