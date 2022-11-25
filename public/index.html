@@ -26,61 +26,66 @@
                     <a class="nav-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="how.html">Game description</a>
+                    <a class="nav-link" href="how.html">Walkthrough</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="credits.html">Group members</a>
+                    <a class="nav-link" href="credits.html">About</a>
                 </li>
             </ul>
         </div>
     </nav>
-    <div class="container main">
-        <div class="row align-items-center">
-            <div class="col-12">
-                    <div class="row text-center my-4">
-                      <div class="col-12">
+    <div class="box">
+        <div class="align-items-center" id="begin">
+                <div class="text-center" style="margin-top: 30px">
+                    <h1 style="font-size:50px">
+                        RAINING WORDS
+                    </h1>
+                    <!-- <div class="col-12">
                         <div class="logo-container">
-                          <img src="images/reallogo.png" alt="logo" />
+                            <img src="images/reallogo.png" alt="logo" />
                         </div>
-                      </div>
-                    </div>
-            </div>
-                <div class="row justify-content-center">
-                    <div class="col-4">
-                        <div class="buttons-container row">
-                            <form action="game.html">
-                                <div class="buttons-container row">
-                                    <div class="form-control">
-                                        <label for="username">Name</label>
-
-                                        <input type="text" name="username" id="username" placeholder="Enter your name..."
-                                            class="form-control form-control-lg" required />
-
-
-                                    </div>
-                                    <div class="form-control">
-                                        <label for="room">Mode select</label>
-                                        <select name="level" id="leve">
-                                            <option value="3000">Easy</option>
-                                            <option value="2000">Medium</option>
-                                            <option value="1200">Hard</option>
-                                            <option value="1000">Super Hard</option>
-                                            <option value="3500">Word Trap</option>
-                                            <option value="2600">War</option>
-                                            
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <button type="submit" class="col-12 btn-index">Join</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    </div> -->
                 </div>
-            </div>
+
+                <div class="buttons-container" style="margin-left: 50px; margin-right: 50px;">
+                    <button
+                        id="btn_begin"
+                        onclick="begin()"
+                        class="col-12 btn-index button"
+                    >
+                        <h2>ENTER</h2>
+                    </button>
+                </div>
+        </div>
+
+        <div class="align-items-center" id="select" style="display:none;">
+            <form action="game.html">
+                <div style="padding: 30px;" class="row">
+                        <div style="padding: 10px; text-align: center; font-size: 30px; color:rgb(0, 0, 0)">
+                            <label for="room" style="margin-bottom: 30px;">Enter your name and select gamemode</label>
+                            <select name="level" id="leve" style="text-align: center">
+                                <option value="3000">Easy</option>
+                                <option value="2000">Medium</option>
+                                <option value="1200">Hard</option>
+                                <option value="1000">Super Hard</option>
+                                <option value="1400">Word Trap</option>
+                                <option value="1500">War</option>
+                            </select>
+                        </div>
+                        
+                </div>
+                <div style="margin-bottom: 30px; margin-left: 50px; margin-right: 50px;">
+                    <!-- <label for="username" class="big">Name</label> -->
+                    <input type="text" style="background-color:black" name="username" id="username" placeholder="Enter your name..."
+                    class="form-control form-control-lg center-element" required />
+                </div>
+                <div>
+                    <button type="submit" class=" btn-index button">Join</button>
+                </div>
+            </form>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"></script>
@@ -93,6 +98,15 @@
         // DEFAULT VOLUME HOME SONG
         const homeSound = document.getElementById('HomeSound');
         homeSound.volume = 0.45;
+    </script>
+    <script>
+        function begin() {
+            const div_begin = document.getElementById('begin');
+            const div_select = document.getElementById('select');
+            div_select.style.display = "block";
+            div_begin.style.display = "none";
+            console.log("yaya!");
+        }
     </script>
 </body>
 
