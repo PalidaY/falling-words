@@ -5,8 +5,8 @@
   color: white;
 }
 
-h2 {
-  background: -webkit-linear-gradient(rgb(255, 0, 0), rgb(238, 255, 5));
+h1 {
+  background: -webkit-linear-gradient(rgb(0, 221, 255), rgb(0, 0, 0));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -103,7 +103,6 @@ margin: 0.3em 0;
 }
 
 .box {
-  max-width: 600px;
   margin-top: 40px;
   margin-left: auto;
   margin-right: auto;

@@ -21,7 +21,6 @@ h6 {
 }
 
 .wrapper {
-  max-width: 600px;
   margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
@@ -34,13 +33,14 @@ h6 {
   background-position: center;
 }
 
+.text-detailed {
+  font-size: 10px;
+}
+
 .box {
-  max-width: 600px;
   margin-top: 40px;
-  margin-left: auto;
-  margin-right: auto;
   text-align: center;
-  padding: 2em 2em;
+  padding: 1em 1em;
   box-shadow: 5px 10px;
   border-radius: 10px;
   align-items: center;
@@ -48,10 +48,7 @@ h6 {
 }
 
 .frame {
-  max-width: 600px;
   margin-top: 40px;
-  margin-left: auto;
-  margin-right: auto;
   text-align: center;
   padding: 1em 1em;
   box-shadow: 5px 10px;
@@ -72,6 +69,21 @@ h6 {
     box-shadow: 5px 10px;
     border-radius: 10px;
     margin: 5px;
+    font-size: 14px;
+}
+
+.button-flat {
+  background-color: rgb(80, 80, 80);
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  border-radius: 10px;
+  margin: 5px;
+  font-size: 14px;
 }
 
 .btn-index:hover,

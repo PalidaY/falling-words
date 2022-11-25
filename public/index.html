@@ -46,7 +46,7 @@
                     <button
                         type="button"
                         class="col-12 btn-index button"
-                        onclick="location.href='credits.html';"
+                        onclick="location.href='about.html';"
                         >
                         About
                     </button>
@@ -67,15 +67,25 @@
                                 <option value="2600">War</option>
                             </select>
                         </div>
-                        
                 </div>
                 <div style="margin-bottom: 30px; margin-left: 50px; margin-right: 50px;">
                     <!-- <label for="username" class="big">Name</label> -->
-                    <input type="text" style="background-color:black" name="username" id="username" placeholder="Enter your name..."
+                    <input type="text" style="background-color:rgb(0, 0, 0); color: white" name="username" id="username" placeholder="Enter your name..."
                     class="form-control form-control-lg center-element" required />
                 </div>
-                <div>
-                    <button type="submit" class=" btn-index button">Join</button>
+                <div class="row">
+                    <div class="column">
+                        <button type="submit" class="btn-index button">Join</button>
+                    </div>
+                    <div class="column">
+                        <button
+                        id="btn_back"
+                        onclick="back()"
+                        class="btn-index button"
+                    >
+                        Back
+                    </button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -95,12 +105,17 @@
         homeSound.volume = 0.45;
     </script>
     <script>
+        const div_begin = document.getElementById('begin');
+        const div_select = document.getElementById('select');
+
         function begin() {
-            const div_begin = document.getElementById('begin');
-            const div_select = document.getElementById('select');
             div_select.style.display = "block";
             div_begin.style.display = "none";
-            console.log("yaya!");
+        }
+
+        function back() {
+            div_select.style.display = "none";
+            div_begin.style.display = "block";
         }
     </script>
 </body>

@@ -466,7 +466,6 @@ function outputUsers(users) {
       scoreElementID.innerHTML = `<p>Score ${user.score}</p>`;
     }
   });
-
 }
 
 // start button after clicked
@@ -474,16 +473,12 @@ playbutton.addEventListener("click", () => {
   console.log("botton clicked");
   socket.emit("shuffleDictionary",{DICTIONARY,WARDICTIONARY,CATDICTIONARY});
   socket.emit('buttonPressed', LEVEL);
-
-
-
 });
 
 socket.on("sendDictoroom", ({newDICTIONARY,newWARDICTIONARY,newCATDICTIONARY}) =>{
   DICTIONARY = newDICTIONARY;
   WARDICTIONARY = newWARDICTIONARY;
   CATDICTIONARY= newCATDICTIONARY;
-
 })
 
 socket.on('startplayfromserver', () => {
@@ -495,11 +490,15 @@ socket.on('startplayfromserver', () => {
 
 
 function showRestartButton() {
-  const reset = `<p><button onclick="Resetscore()" type="submit" id = "restartgame" class="col-12 btn-index">
-      <h6>Restart</h6></button></p>`;
+  const reset = `<button 
+                    onclick="Resetscore()" 
+                    type="submit" 
+                    id = "restartgame" 
+                    class="button-flat btn-index"
+                  >
+                    Restart
+                  </button>`;
   document.getElementById("buttonsection1").innerHTML = reset;
-
-
 }
 
 function Resetscore() {

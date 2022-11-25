@@ -34,43 +34,47 @@
         <div class="box">
           <h1 style="font-size: 30px"id="welcome"></h1>
         </div>
-        
-        <div class="box row">
-          <div class="column">
-            <h5 id="room-name"></h5>
-            <h7><i class="fas fa-users">Users in Room </i> </h7>
-            <ul id="users"></ul>
-          </div>
-          <div class="column">
-            <div class="row">
-                number of player:
-            </div>
-            <div class="row" style="font-size: 60px;">
-                <p id="numuser" style="text-align: center"></p>
-            </div>
-          </div>
-        </div>
 
-        <div class="row frame" >
-          <div class="column">
-            <button
-              type="submit"
-              id="playgame"
-              class="button btn-index"
-              style="box-shadow: 0px 0px"
-            >
-              Start
-            </button>
+        <div class="box">
+          <div class="row">
+            <div class="column text-detailed">
+              <h5 id="room-name"></h5>
+              <h7><i class="fas fa-users">Users in Room </i> </h7>
+              <ul id="users"></ul>
+            </div>
+            <div class="column">
+              <div class="row">
+                  <p>number of player:</p>
+              </div>
+              <div class="row" style="font-size: 60px; padding: 10px 0;">
+                  <p id="numuser">0</p>
+              </div>
+            </div>
           </div>
-          <div class="column">
-            <button
-              type="button"
-              class="button btn-index"
-              onclick="location.href='index.html';"
-              style="box-shadow: 0px 0px"
-            >
-              Exit
-            </button>
+        </div>   
+        
+        <div class="frame">
+          <div class="row">
+            <div class="column" id="buttonsection1">
+              <button
+                type="submit"
+                id="playgame"
+                class="button btn-index"
+                style="box-shadow: 0px 0px"
+              >
+                Start
+              </button>
+            </div>
+            <div class="column">
+              <button
+                type="button"
+                class="button btn-index"
+                onclick="location.href='index.html';"
+                style="box-shadow: 0px 0px"
+              >
+                Exit
+              </button>
+            </div>
           </div>
         </div>
 
@@ -80,15 +84,6 @@
             <input type="submit" hidden />
           </form>
         </div>
-      </div>
-
-      <div class="row">
-          <div class="column">
-            <div id="buttonsection1"></div>
-          </div>
-          <div class="column">
-            <div id="buttonsection2"></div>
-          </div>
       </div>
         
     </div>
