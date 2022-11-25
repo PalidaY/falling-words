@@ -10,6 +10,7 @@ const userList = document.getElementById('users');
 const welcome = document.getElementById('welcome');
 const playbutton = document.getElementById('playgame');
 const buttonSectionID = document.getElementById("buttonsection");
+const numuserID = document.getElementById("numuser");
 
 
 const queryString = window.location.search;
@@ -432,7 +433,7 @@ socket.on('roomUsers', ({ room, users,numuser }) => {
 
 });
 function outputNumberuser(numuser){
-  document.getElementById("numuser").innertext = numuser;
+  numuserID.innerHTML = numuser.toString();
 
 }
 
