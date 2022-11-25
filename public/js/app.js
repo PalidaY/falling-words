@@ -531,8 +531,35 @@ function init() {
 }
 
 
+  document.getElementById('Time').innerHTML =
+  05 + ":" + 01;
+  function timedCount() {
+    var presentTime = document.getElementById('Time').innerHTML;
+    var timeArray = presentTime.split(/[:]+/);
+    var m = timeArray[0];
+    var s = checkSecond((timeArray[1] - 1));
+    if(s==59){m=m-1}
+    if(m<0){
+      socket.emit('Gameover', LEVEL);
+      gameOver = true;
+      return
+    }
+    
+    document.getElementById('Time').innerHTML =
+      m + ":" + s;
+    console.log(m)
+    setTimeout(timedCount, 1000);
+    
+  }
+  
+  function checkSecond(sec) {
+    if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+    if (sec < 0) {sec = "59"};
+    return sec;
+  }  
 
 
+/*
 const maxtime = 300000;
 let counter = maxtime / 1000; // seconds
 document.getElementById("Time").innerHTML = counter;
@@ -550,7 +577,7 @@ function timedCount() {
     gameOver = true;
   }
 }
-
+*/
 
 // CREATE WORD, STORES IT IN AN ARRAY & GET POSITION WHERE IT STARTS TO FALLLS
 function drawWord() {
