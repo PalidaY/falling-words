@@ -426,6 +426,7 @@ socket.on('welcomemessage', welcomemessage => {
 socket.on('roomUsers', ({ room, users,numuser }) => {
   outputRoomName(room);
   outputUsers(users);
+  console.log(numuser);
   outputNumberuser(numuser);
 
 
