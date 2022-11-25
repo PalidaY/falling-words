@@ -635,7 +635,7 @@ function drawWord() {
       wordDiv.setAttribute("id", "angel");
     }
       // Word Trap
-  }else if(currentLevel == ""){ 
+  }else if(currentLevel == "3500"){ 
     word = generateRandomWord(CATDICTIONARY);
     console.log("Trap " +word);
     wordDiv = document.createElement("div");
