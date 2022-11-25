@@ -1,6 +1,8 @@
 @font-face {
   font-family: 'chrustyRock';
   src: url('../font/chrustyRock.ttf');
+  font-family: '04B_30';
+  src: url('../font/04B_30__.ttf');
 }
 
 * {
@@ -8,21 +10,23 @@
   padding: 0;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
+  font: 0
 }
 
 body {
-  font-family: 'chrustyRock';
-  background-image: url('https://wallpapercave.com/uwp/uwp410864.jpeg');
+  font-family: '04B_30';
+  background-image: url('../images/night_sky_pixel_art_by_h4ckz_devxmyy.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   min-height: min-content;
   height: 100vh;
   width: 100vw;
+  margin: 0em auto;
 }
 
 input {
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 p {
@@ -45,7 +49,7 @@ p {
 }
 
 .nav-link:hover {
-  background-color: rgba(192, 125, 255, 0.63);
-  color: rgb(238, 255, 0) !important;
+  background-color: rgb(58, 18, 170);
+  color: rgb(255, 255, 255) !important;
   transform: translateY(-4px);
 }
