@@ -69,9 +69,16 @@ io.on('connection', socket => {
         //formatMessage(botName, `${user.username} has joined the room`));
 
         // Send users and room info
+        const users = getRoomUsers(user.room);
+        let countuser =0;
+        users.forEach(() => {
+            countuser++;
+        });
+
         io.to(user.room).emit("roomUsers", {
             room: user.room,
             users: getRoomUsers(user.room),
+            numuser : countuser
         });
 
 
@@ -111,9 +118,17 @@ io.on('connection', socket => {
         users.forEach((user) => {
             user.score = 0;
           });
+
+         //const users = getRoomUsers(user.room);
+        let countuser =0;
+        users.forEach(() => {
+            countuser++;
+        });
+
         io.to(user.room).emit("roomUsers", {
             room: user.room,
             users: getRoomUsers(user.room),
+            numuser : countuser
         });
 
 
@@ -126,10 +141,18 @@ io.on('connection', socket => {
             user.score -= 100;
         });
         user.score = score;
+        //const users = getRoomUsers(user.room);
+        let countuser =0;
+        users.forEach(() => {
+            countuser++;
+        });
+
         io.to(user.room).emit("roomUsers", {
             room: user.room,
             users: getRoomUsers(user.room),
+            numuser : countuser
         });
+
         
     });
 
@@ -140,10 +163,18 @@ io.on('connection', socket => {
             user.score -= 50;
         });
         user.score = score;
+        //const users = getRoomUsers(user.room);
+        let countuser =0;
+        users.forEach(() => {
+            countuser++;
+        });
+
         io.to(user.room).emit("roomUsers", {
             room: user.room,
             users: getRoomUsers(user.room),
+            numuser : countuser
         });
+
 
         
     });
@@ -155,11 +186,18 @@ io.on('connection', socket => {
             user.score -= 25;
         });
         user.score = score;
+        //const users = getRoomUsers(user.room);
+        let countuser =0;
+        users.forEach(() => {
+            countuser++;
+        });
+
         io.to(user.room).emit("roomUsers", {
             room: user.room,
             users: getRoomUsers(user.room),
+            numuser : countuser
         });
-        
+
     });
     socket.on("knife",score=>{
         const user = getCurrentUser(socket.id);
@@ -168,10 +206,18 @@ io.on('connection', socket => {
             user.score -= 10;
         });
         user.score = score;
+        //const users = getRoomUsers(user.room);
+        let countuser =0;
+        users.forEach(() => {
+            countuser++;
+        });
+
         io.to(user.room).emit("roomUsers", {
             room: user.room,
             users: getRoomUsers(user.room),
+            numuser : countuser
         });
+
         
     });
     socket.on("angel",score=>{
@@ -181,10 +227,18 @@ io.on('connection', socket => {
             user.score += 50;
         });
         user.score = score;
+        //const users = getRoomUsers(user.room);
+        let countuser =0;
+        users.forEach(() => {
+            countuser++;
+        });
+
         io.to(user.room).emit("roomUsers", {
             room: user.room,
             users: getRoomUsers(user.room),
+            numuser : countuser
         });
+
         
     });
     
@@ -194,10 +248,18 @@ io.on('connection', socket => {
         const removeuser = userLeave(socket.id);
         const user = userJoin(socket.id, username, LEVEL, score);
 
+        const users = getRoomUsers(user.room);
+        let countuser =0;
+        users.forEach(() => {
+            countuser++;
+        });
+
         io.to(user.room).emit("roomUsers", {
             room: user.room,
             users: getRoomUsers(user.room),
+            numuser : countuser
         });
+
 
     });
 
@@ -236,9 +298,16 @@ io.on('connection', socket => {
         const user = userLeave(socket.id);
 
         // Send users and room info
+        const users = getRoomUsers(user.room);
+        let countuser =0;
+        users.forEach(() => {
+            countuser++;
+        });
+
         io.to(user.room).emit("roomUsers", {
             room: user.room,
             users: getRoomUsers(user.room),
+            numuser : countuser
         });
 
     });

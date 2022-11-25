@@ -423,12 +423,17 @@ socket.on('welcomemessage', welcomemessage => {
 
 });
 
-socket.on('roomUsers', ({ room, users }) => {
+socket.on('roomUsers', ({ room, users,numuser }) => {
   outputRoomName(room);
   outputUsers(users);
+  outputNumberuser(numuser);
 
 
 });
+function outputNumberuser(numuser){
+  document.getElementById("numuser").innertext = numuser;
+
+}
 
 function outputRoomName(room) {
 
