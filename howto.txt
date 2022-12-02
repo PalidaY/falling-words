@@ -1,0 +1,2 @@
+in cmd> npm run dev
+ngrok> ngrok http 4000
