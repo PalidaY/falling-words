@@ -1,4 +1,4 @@
-# falling-words
+# Rainy word Game
  "RainyWords Game" is a fun experience of the word typing game that player need to type the word as fast as possible! within the time limit.
 								Words will falling from the top to the bottom and disappear as the one of the players finish typing the word.<br>
 								There are multiple Gamemode (room) which allow user to play with their friends by joining in the same room with a lot of extra features, <br>
@@ -35,7 +35,7 @@
 <img width="893" alt="2" src="https://user-images.githubusercontent.com/88932911/205473532-f0876d68-1d0b-4a92-95b9-949d85c64a15.PNG">
 
 # How to run
-1.Extract the folder and cd to the folder's location, then using command <b> npm run dev </b> to initiate the server.
+1.Extract the folder and cd to the folder's location, then using command <b> npm run dev </b> to initiate the server. <br>
 2.Open <b> http://localhost:4000/ </b> on your browser 
 
 
