@@ -34,6 +34,10 @@
           
 <img width="893" alt="2" src="https://user-images.githubusercontent.com/88932911/205473532-f0876d68-1d0b-4a92-95b9-949d85c64a15.PNG">
 
+# How to run
+1.Extract the folder and cd to the folder's location, then using command <b> npm run dev </b> to initiate the server.
+2.Open <b> http://localhost:4000/ </b> on your browser 
+
 
  
 
